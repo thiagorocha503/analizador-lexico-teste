@@ -277,6 +277,10 @@ if arquivo is not None:
     total_erros = 0  # Erros de todas as linha do código
     linha = 0  # linha atual de analize do código
     print()
+    print("==================================")
+    print("      Resultado da análise        ")
+    print("==================================")
+    print()
     while line != "":
         linha += 1
         codigo = list(line)
@@ -293,11 +297,9 @@ if arquivo is not None:
                 break
         line = arquivo.readline()
     if total_erros == 0:
-        print("==================================")
-        print("   Analise concluída sem erros  ")
-        print("==================================")
         for x in analise:
             print(">>>", x)
+        print("Nenhum erro lexico encontrado.")
         print("Total de erros: ", total_erros)
     else:
         print()
