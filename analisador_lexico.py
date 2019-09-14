@@ -1,3 +1,4 @@
+# from tkinter import messagebox
 
 alfabeto = ("a", "b", "c", "d", "e", "f", "g", "h",
             "i", "j", "k", "l", "m", "n", "o", "p",
@@ -37,7 +38,7 @@ def numeral():
                 else:
                     print("Linha %4.d - Erro 01: Ponto decimal a mais:" % linha)
                     print("Numeral: ", num + codigo[indice])
-                    print(" " * 8, " " * len(num), "^")  # ponteiro de erro
+                    print(" " * 8, " " * len(num), "^")  #git ponteiro de erro
                     erros += 1
                     indice += 1  # ignora o ponto a mais
                     break
@@ -218,7 +219,7 @@ def next_token(n):
         _token = constante()
     elif n in operadores:  # operadores aritméticos/relacionais ou número negativo
         if n == '-' and codigo[indice + 1] in numeros:# verifica se após o o sinal há um núemro
-            _token = numeral() # numero real ou inteiro negativo
+            _token = numeral()  # numero real ou inteiro negativo
         else:
             _token = operador()
     elif n in outros:  # Outros símbolos válidos
@@ -257,36 +258,47 @@ def pula_espacos():
 
     #     Entrada por arquivo
 
+def abreArquivo(nome = "codigo.txt"):
+    try:
+        _arquivo = open(nome)
+        return _arquivo
+    except FileNotFoundError:
+        print("Erro: Arquivo não encontrado!")
+        return None
+    except Exception as ex:
+        print("Erro: ", str(ex))
+        return None
 
 space = 0  # Quantidade de espaços total
 analise = []  # Lista que armazena os tokens
-arquivo = open("codigo.txt")
-line = arquivo.readline()
-total_erros = 0  # Erros de todas as linha do código
-linha = 0  # linha atual de analize do código
-print()
-while line != "":
-    linha += 1
-    codigo = list(line)
-    tamanho = len(codigo)
-    erros = 0  # Erros de uma linha do código
-    indice = 0  # indice da lista
-    while indice < tamanho:
-        if codigo[indice] == " ":
-            pula_espacos()
-        token = next_token(codigo[indice])
-        total_erros += erros
-        analise.append(token)  # Adiciona o token
-        if erros > 0:  # Pule para próxima linha de código
-            break
+arquivo = abreArquivo()
+if arquivo is not None:
     line = arquivo.readline()
-if total_erros == 0:
-    print("==================================")
-    print("   Analise concluída sem erros  ")
-    print("==================================")
-    for x in analise:
-        print(">>>", x)
-    print("Total de erros: ", total_erros)
-else:
+    total_erros = 0  # Erros de todas as linha do código
+    linha = 0  # linha atual de analize do código
     print()
-    print("Total de erros: ", total_erros)
+    while line != "":
+        linha += 1
+        codigo = list(line)
+        tamanho = len(codigo)
+        erros = 0  # Erros de uma linha do código
+        indice = 0  # indice da lista
+        while indice < tamanho:
+            if codigo[indice] == " ":
+                pula_espacos()
+            token = next_token(codigo[indice])
+            total_erros += erros
+            analise.append(token)  # Adiciona o token
+            if erros > 0:  # Pule para próxima linha de código
+                break
+        line = arquivo.readline()
+    if total_erros == 0:
+        print("==================================")
+        print("   Analise concluída sem erros  ")
+        print("==================================")
+        for x in analise:
+            print(">>>", x)
+        print("Total de erros: ", total_erros)
+    else:
+        print()
+        print("Total de erros: ", total_erros)
