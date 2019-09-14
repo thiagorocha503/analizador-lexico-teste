@@ -38,7 +38,7 @@ def numeral():
                 else:
                     print("Linha %4.d - Erro 01: Ponto decimal a mais:" % linha)
                     print("Numeral: ", num + codigo[indice])
-                    print(" " * 8, " " * len(num), "^")  #git ponteiro de erro
+                    print(" " * 8, " " * len(num), "^")  #gitgi ponteiro de erro
                     erros += 1
                     indice += 1  # ignora o ponto a mais
                     break
