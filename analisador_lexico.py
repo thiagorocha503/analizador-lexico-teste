@@ -38,12 +38,12 @@ def numeral():
                 else:
                     print("Linha %4.d - Erro 01: Ponto decimal a mais:" % linha)
                     print("Numeral: ", num + codigo[indice])
-                    print(" " * 8, " " * len(num), "^")  #gitgi ponteiro de erro
+                    print(" " * 8, " " * len(num), "^")  # gitgi ponteiro de erro
                     erros += 1
                     indice += 1  # ignora o ponto a mais
                     break
             elif codigo[indice] == "-":
-                num = num + codigo[indice]# adiciona o sinal
+                num = num + codigo[indice]  # adiciona o sinal
                 indice += 1
             else:  # Se não,  número.
                 num = num + codigo[indice]
@@ -132,7 +132,7 @@ def operador():
                         erros += 1
                 else:
                     if next_lexema in operadores:
-                        if simbolo in ("+", "-", "/", "*","%") and next_lexema == "=":
+                        if simbolo in ("+", "-", "/", "*", "%") and next_lexema == "=":
                             simbolo = simbolo + next_lexema
                             indice += 1
                         elif (simbolo == next_lexema == "+") or (simbolo == next_lexema == "-"):
@@ -221,7 +221,7 @@ def next_token(n):
     elif n in alfabeto:  # Identificadores/ palavras chaves
         _token = constante()
     elif n in operadores:  # operadores aritméticos/relacionais ou número negativo
-        if n == '-' and codigo[indice + 1] in numeros:# verifica se após o o sinal há um núemro
+        if n == '-' and codigo[indice + 1] in numeros:  # verifica se após o o sinal há um núemro
             _token = numeral()  # numero real ou inteiro negativo
         else:
             _token = operador()
@@ -261,7 +261,8 @@ def pula_espacos():
 
     #     Entrada por arquivo
 
-def abreArquivo(nome = "codigo.txt"):
+
+def abre_arquivo(nome="codigo.txt"):
     try:
         _arquivo = open(nome)
         return _arquivo
@@ -272,9 +273,10 @@ def abreArquivo(nome = "codigo.txt"):
         print("Erro: ", str(ex))
         return None
 
+
 space = 0  # Quantidade de espaços total
 analise = []  # Lista que armazena os tokens
-arquivo = abreArquivo()
+arquivo = abre_arquivo()
 if arquivo is not None:
     line = arquivo.readline()
     total_erros = 0  # Erros de todas as linha do código
