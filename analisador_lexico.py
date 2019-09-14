@@ -132,8 +132,11 @@ def operador():
                         erros += 1
                 else:
                     if next_lexema in operadores:
-                        if simbolo in ("+", "-", "/", "*") and next_lexema == "=":
+                        if simbolo in ("+", "-", "/", "*","%") and next_lexema == "=":
                             simbolo = simbolo + next_lexema
+                            indice += 1
+                        elif (simbolo == next_lexema == "+") or (simbolo == next_lexema == "-"):
+                            simbolo += next_lexema
                             indice += 1
                         elif simbolo == "=" and next_lexema == "=":
                             simbolo = "=="
