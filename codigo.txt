@@ -1,14 +1,23 @@
-class Livro:
-    def __init__(self):
-        self.isbn = isbn
-        self.titulo = titulo
-6.9415
--9.0
-a << a
-a =! 7
-a <> 7
-a ! 7
-"string   "
-"string§_"
-5.00.0
-var§_
+
+
+nome = "Matheus"
+PI = 3.1415
+bool = True
+a = 8
+b = 2.0
+c = -3
+d = 1.5
+while
+for
+6 > 1
+6 >= 6
+5 == 5
+5 != 7
+8 < 9
+2 <= 10
+6 += 2
+6 -= 2
+6 /= 2
+6 *= 2
+
+
