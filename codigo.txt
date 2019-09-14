@@ -1,0 +1,15 @@
+class Livro:
+    def __init__(self):
+        self.isbn = isbn
+        self.titulo = titulo
+
+
+a << a
+a =! 7
+a <> 7
+a ! 7
+"string
+"string§_"
+5.00.0
+5var
+var§_
