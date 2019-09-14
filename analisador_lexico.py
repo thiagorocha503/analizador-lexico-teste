@@ -28,7 +28,7 @@ def numeral():
     ponto = 0
     num = ""
     while indice < tamanho:
-        if (codigo[indice] in numeros) or (codigo[indice] == "."):
+        if (codigo[indice] in numeros) or (codigo[indice] in (".", "-")):
             if codigo[indice] == ".":
                 ponto += 1
                 if ponto == 1:  # Verifica se ponto é permitido
@@ -41,6 +41,9 @@ def numeral():
                     erros += 1
                     indice += 1  # ignora o ponto a mais
                     break
+            elif codigo[indice] == "-":
+                num = num + codigo[indice]# adiciona o sinal
+                indice += 1
             else:  # Se não,  número.
                 num = num + codigo[indice]
                 indice += 1
@@ -116,7 +119,7 @@ def operador():
             pula_espacos()
         else:
             if indice < tamanho:
-                next_lexema = codigo[indice]  # próximo lexema valido
+                next_lexema = codigo[indice]  # próximo lexema válido
                 if simbolo == "!":  # "!" Não pode está desacompanhado de "="
                     if next_lexema == "=":
                         simbolo = "!="
@@ -213,8 +216,11 @@ def next_token(n):
         _token = string()
     elif n in alfabeto:  # Identificadores/ palavras chaves
         _token = constante()
-    elif n in operadores:  # operadores aritméticos/relacionais
-        _token = operador()
+    elif n in operadores:  # operadores aritméticos/relacionais ou número negativo
+        if n == '-' and codigo[indice + 1] in numeros:# verifica se após o o sinal há um núemro
+            _token = numeral() # numero real ou inteiro negativo
+        else:
+            _token = operador()
     elif n in outros:  # Outros símbolos válidos
         _token = codigo[indice]
         indice += 1
