@@ -93,7 +93,7 @@ def constante():
                     const = const + codigo[indice]
                     print("Linha %4.d - Erro 03: caracter invalido" % linha)
                     print(const)
-                    print(" " * (len(const) - 1), "^")
+                    print(" " * (len(const) - 2), "^")
                     erros += 1
                     indice += 1
         else:
