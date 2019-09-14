@@ -8,7 +8,7 @@ a << a
 a =! 7
 a <> 7
 a ! 7
-"string
+"string   "
 "string§_"
 5.00.0
 5var
