@@ -1,5 +1,3 @@
-# from tkinter import messagebox
-
 alfabeto = ("a", "b", "c", "d", "e", "f", "g", "h",
             "i", "j", "k", "l", "m", "n", "o", "p",
             "q", "r", "s", "t", "u", "v", "w", "x",
@@ -67,9 +65,9 @@ def numeral():
         return int(num)
     else:
         return float(num)
-    #      VARIÁVEIS/PALAVRAS-RESERVADAS
 
-
+  
+#      VARIÁVEIS/PALAVRAS-RESERVADAS
 def constante():
     global indice
     global erros
@@ -151,8 +149,6 @@ def operador():
                             indice += 1
                             erros += 1
     return simbolo
-
-
 #
 #        STRING
 #
@@ -195,19 +191,6 @@ def string():
         print(" " * (len(_string) - 1), "^")
     _string = _string + '"'
     return _string
-
-
-"""
-def marcador():
-    global i 
-    x = 0
-    if codigo[i] =="\n":
-        x = "\n"
-    elif codigo[i] =="\t":
-        x = "\t"
-    i+=1
-    return x
-"""
 
 
 def next_token(n):
@@ -259,8 +242,6 @@ def pula_espacos():
     else:
         print("Fim")
 
-    #     Entrada por arquivo
-
 
 def abre_arquivo(nome="codigo.txt"):
     try:
@@ -293,8 +274,11 @@ if arquivo is not None:
         erros = 0  # Erros de uma linha do código
         indice = 0  # indice da lista
         while indice < tamanho:
-            if codigo[indice] == " ":
+            if codigo[indice] == " ":# tratamento de espaço
                 pula_espacos()
+            if codigo[indice] == "/" and (indice + 1) < len(codigo):# tratamento comentario de uma linha
+                if codigo[indice + 1] == "/":
+                    break # interrope leitura do restante da lista
             token = next_token(codigo[indice])
             total_erros += erros
             analise.append(token)  # Adiciona o token
