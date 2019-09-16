@@ -180,7 +180,7 @@ def string():
                 _string = _string + codigo[indice]
                 print("Linha %4.d - Erro 07: Caracter inválido" % linha)
                 print(_string)
-                print(" " * (len(_string) - 1), "^")
+                print(" " * (len(_string) - 2), "^")
                 indice += 1  # próximo carácter
                 erros += 1
             if indice >= tamanho:
