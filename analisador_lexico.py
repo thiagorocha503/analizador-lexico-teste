@@ -17,7 +17,7 @@ reservadas = ("while", "for", "break", "swith",
               "float", "str")
 marcadores = ("\n", "\t")
 # Caracter válidos para strings
-caracterValidosString = numeros + alfabeto + delimitadores + outros + operadores
+caracterValidosString = numeros + alfabeto + delimitadores + outros + operadores + (" ",)
 
 
 #     NUMERAL
